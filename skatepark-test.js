@@ -345,12 +345,6 @@ describe('Skater', function() {
 
     assert.equal(skater.practice('bigSpin'), 'I just learned to bigSpin!!!')
     assert.equal(skater.tricks.bigSpin, true)
-
-    skater.practice('treflip')
-    skater.practice('treflip')
-
-    assert.equal(skater.practice('treflip'), 'I just learned to treflip!!!')
-    assert.equal(skater.tricks.treflip, true) 
   })
 
   it('should lose all frustration after learning a new trick', function() {
@@ -372,5 +366,32 @@ describe('Skater', function() {
 
     assert.equal(skater.tricks.kickflip, true)
     assert.equal(skater.frustration, 0)
+  })
+
+  it('should be able to learn a many tricks  after practicing and getting frustrated 3 times', function() {
+    var tricks = {
+      kickflip: true,
+      treflip: false,
+      bigSpin: false
+    }
+    var skater = new Skater({
+      name: 'Natalie', 
+      skill: 'Intermediate', 
+      tricks: tricks,
+      cash: 20
+    });
+
+    skater.practice('bigSpin')
+    skater.practice('bigSpin')
+    assert.equal(skater.frustration, 2)
+
+    assert.equal(skater.practice('bigSpin'), 'I just learned to bigSpin!!!')
+    assert.equal(skater.tricks.bigSpin, true)
+
+    skater.practice('treflip')
+    skater.practice('treflip')
+
+    assert.equal(skater.practice('treflip'), 'I just learned to treflip!!!')
+    assert.equal(skater.tricks.treflip, true) 
   })
 })
