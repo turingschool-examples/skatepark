@@ -3,25 +3,25 @@ var SkatePark = require('./skatepark.js');
 var Skater = require('./skater.js');
 
 describe('Skate Park', function() {
-  it('should be a function', function() {
+  it.skip('should be a function', function() {
     assert.isFunction(SkatePark);
   });
 
-  it('should have a name', function() {
+  it.skip('should have a name', function() {
     var skatePark1 = new SkatePark('Burnside');
     var skatePark2 = new SkatePark('Woodward');
     assert.equal(skatePark1.name, 'Burnside');
     assert.equal(skatePark2.name, 'Woodward');
   })
 
-  it('should have the year it was built', function() {
+  it.skip('should have the year it was built', function() {
     var skatePark1 = new SkatePark('Burnside', 1990);
     var skatePark2 = new SkatePark('Woodward', 1970);
     assert.equal(skatePark1.yearFounded, 1990);
     assert.equal(skatePark2.yearFounded, 1970);
   })
 
-  it('should have a style', function() {
+  it.skip('should have a style', function() {
     var skatePark1 = new SkatePark('Burnside', 1990, 'transition');
     var skatePark2 = new SkatePark('Woodward', 1970, 'flow');
 
@@ -29,7 +29,7 @@ describe('Skate Park', function() {
     assert.equal(skatePark2.style, 'flow');
   })
 
-  it('should have some unique features', function() {
+  it.skip('should have some unique features', function() {
     var features1 = ['pyramid', 'concrete coping', 'pools'];
     var skatePark1 = new SkatePark('Burnside', 1990, 'transition', features1);
     
@@ -40,7 +40,7 @@ describe('Skate Park', function() {
     assert.equal(skatePark2.features, features2);
   })
 
-  it('should default to being a public park', function() {
+  it.skip('should default to being a public park', function() {
     var skatePark1 = new SkatePark(
       'Louisville Extreme Park', 
       2002, 
@@ -60,7 +60,7 @@ describe('Skate Park', function() {
     assert.equal(skatePark2.isPrivate, true);
   })
 
-  it('should defaut to being free', function() {
+  it.skip('should defaut to being free', function() {
     var skatePark1 = new SkatePark(
       'Louisville Extreme Park', 
       2002, 
@@ -81,10 +81,9 @@ describe('Skate Park', function() {
     assert.equal(skatePark2.cost, 12)
   });
 
-  
   // finish skater tests below before completing the rest of the skatepark tests
   
-  it('should be able to keep track of its occupants', function() {
+  it.skip('should be able to keep track of its occupants', function() {
     var skatePark = new SkatePark(
       'Major Taylor',
       1999,
@@ -95,7 +94,7 @@ describe('Skate Park', function() {
     assert.deepEqual(skatePark.occupants, [])
   })
 
-  it('should take payment from the skater only if it is a private park', function() {
+  it.skip('should take payment from the skater only if it is a private park', function() {
     var tricks = {
       kickflip: true,
       treflip: false,
@@ -133,7 +132,7 @@ describe('Skate Park', function() {
     assert.deepEqual(skatePark2.occupants, [skater])
   })
 
-  it('should only admit skaters to a private park if they can pay', function() {
+  it.skip('should only admit skaters to a private park if they can pay', function() {
     var skatePark = new SkatePark(
       'Curbside', 
       2018, 
@@ -165,10 +164,10 @@ describe('Skate Park', function() {
       12
     );
 
-    assert(skatePark.admit(skater), `Sorry, you don't have enough money`)
+    assert(skatePark.admit(skater), `Sorry, you don't have enough money.`)
   })
 
-  it('should only allow 3 skaters at a time for social distancing', function() {
+  it.skip('should only allow 3 skaters at a time for social distancing', function() {
     var tricks = {
       kickflip: true,
       treflip: true,
@@ -218,7 +217,7 @@ describe('Skate Park', function() {
 })
 
 describe('Skater', function() {
-  it('should have a name', function() {
+  it.skip('should have a name', function() {
     var skater = new Skater({name: 'Scott'});
     var skater2 = new Skater({name: 'Nora'})
 
@@ -226,7 +225,7 @@ describe('Skater', function() {
     assert.equal(skater2.name, 'Nora');
   })
 
-  it('should have a skill level', function() {
+  it.skip('should have a skill level', function() {
     var skater = new Skater({name: 'Scott', skill: 'Intermediate'});
     var skater2 = new Skater({name: 'Nora', skill: 'Advanced'});
 
@@ -234,7 +233,7 @@ describe('Skater', function() {
     assert.equal(skater2.skill, 'Advanced');
   })
 
-  it('should know some tricks', function() {
+  it.skip('should know some tricks', function() {
     var tricks = {
       kickflip: true,
       treflip: false,
@@ -261,7 +260,7 @@ describe('Skater', function() {
     assert.equal(skater2.tricks.treflip, true)
   })
 
-  it('should have some money', function() {
+  it.skip('should have some money', function() {
     var tricks = {
       kickflip: true,
       treflip: false,
@@ -290,7 +289,7 @@ describe('Skater', function() {
     assert.equal(skater2.money, 200)
   })
 
-  it('should start off with no frustration', function() {
+  it.skip('should start off with no frustration', function() {
     var tricks = {
       kickflip: true,
       treflip: false,
@@ -306,7 +305,7 @@ describe('Skater', function() {
     assert.equal(skater.frustration, 0)
   })
 
-  it('should get more frustrated when practicing tricks they dont know', function() {
+  it.skip('should get more frustrated when practicing tricks they dont know', function() {
     var tricks = {
       kickflip: true,
       treflip: false,
@@ -326,7 +325,7 @@ describe('Skater', function() {
     assert.equal(skater.frustration, 2)
   })
 
-  it('should learn a trick after practicing and getting frustrated 3 times', function() {
+  it.skip('should learn a trick after practicing and getting frustrated 3 times', function() {
     var tricks = {
       kickflip: true,
       treflip: false,
@@ -347,7 +346,7 @@ describe('Skater', function() {
     assert.equal(skater.tricks.bigSpin, true)
   })
 
-  it('should lose all frustration after learning a new trick', function() {
+  it.skip('should lose all frustration after learning a new trick', function() {
     var tricks = {
       kickflip: false,
       treflip: false,
@@ -368,7 +367,7 @@ describe('Skater', function() {
     assert.equal(skater.frustration, 0)
   })
 
-  it('should be able to learn a many tricks  after practicing and getting frustrated 3 times', function() {
+  it.skip('should be able to learn many tricks  after practicing and getting frustrated 3 times', function() {
     var tricks = {
       kickflip: true,
       treflip: false,
@@ -395,3 +394,5 @@ describe('Skater', function() {
     assert.equal(skater.tricks.treflip, true) 
   })
 })
+
+// Go up and finish remaining SkatePark tests.
