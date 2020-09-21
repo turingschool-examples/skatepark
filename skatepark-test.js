@@ -346,27 +346,6 @@ describe('Skater', function() {
     assert.equal(skater.tricks.bigSpin, true)
   })
 
-  it.skip('should lose all frustration after learning a new trick', function() {
-    var tricks = {
-      kickflip: false,
-      treflip: false,
-      bigSpin: false
-    }
-    var skater = new Skater({
-      name: 'Lyanna', 
-      skill: 'Beginner', 
-      tricks: tricks,
-      cash: 20
-    });
-
-    skater.practice('kickflip')
-    skater.practice('kickflip')
-    skater.practice('kickflip')
-
-    assert.equal(skater.tricks.kickflip, true)
-    assert.equal(skater.frustration, 0)
-  })
-
   it.skip('should be able to learn many tricks  after practicing and getting frustrated 3 times', function() {
     var tricks = {
       kickflip: true,
@@ -393,6 +372,28 @@ describe('Skater', function() {
     assert.equal(skater.practice('treflip'), 'I just learned to treflip!!!')
     assert.equal(skater.tricks.treflip, true) 
   })
+
+  it.skip('should lose all frustration after learning a new trick', function() {
+    var tricks = {
+      kickflip: false,
+      treflip: false,
+      bigSpin: false
+    }
+    var skater = new Skater({
+      name: 'Lyanna', 
+      skill: 'Beginner', 
+      tricks: tricks,
+      cash: 20
+    });
+
+    skater.practice('kickflip')
+    skater.practice('kickflip')
+    skater.practice('kickflip')
+
+    assert.equal(skater.tricks.kickflip, true)
+    assert.equal(skater.frustration, 0)
+  })
+
 })
 
 // Go up and finish remaining SkatePark tests.
