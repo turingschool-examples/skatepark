@@ -8,22 +8,22 @@ describe('Skate Park', function() {
   });
 
   it.skip('should have a name', function() {
-    var skatePark1 = new SkatePark('Burnside');
-    var skatePark2 = new SkatePark('Woodward');
+    var skatePark1 = new SkatePark({name:'Burnside'});
+    var skatePark2 = new SkatePark({name:'Woodward'});
     assert.equal(skatePark1.name, 'Burnside');
     assert.equal(skatePark2.name, 'Woodward');
   })
 
   it.skip('should have the year it was built', function() {
-    var skatePark1 = new SkatePark('Burnside', 1990);
-    var skatePark2 = new SkatePark('Woodward', 1970);
+    var skatePark1 = new SkatePark({name: 'Burnside', year: 1990});
+    var skatePark2 = new SkatePark({name: 'Woodward', year: 1970});
     assert.equal(skatePark1.yearFounded, 1990);
     assert.equal(skatePark2.yearFounded, 1970);
   })
 
   it.skip('should have a style', function() {
-    var skatePark1 = new SkatePark('Burnside', 1990, 'transition');
-    var skatePark2 = new SkatePark('Woodward', 1970, 'flow');
+    var skatePark1 = new SkatePark({name: 'Burnside', year: 1990, type: 'transition'});
+    var skatePark2 = new SkatePark({name: 'Woodward', year: 1970, type: 'flow'});
 
     assert.equal(skatePark1.style, 'transition');
     assert.equal(skatePark2.style, 'flow');
@@ -31,69 +31,85 @@ describe('Skate Park', function() {
 
   it.skip('should have some unique features', function() {
     var features1 = ['pyramid', 'concrete coping', 'pools'];
-    var skatePark1 = new SkatePark('Burnside', 1990, 'transition', features1);
+
+    var skatePark1 = new SkatePark({
+      name: 'Burnside',
+      year: 1990,
+      type: 'transition',
+      features: features1
+    });
     
     var features2 = ['full pipe', 'street course', '11 foot bowls'];
-    var skatePark2 = new SkatePark('Louisville Extreme Park', 2002, 'flow', features2);
+
+    var skatePark2 = new SkatePark({
+      name: 'Louisville Extreme Park', 
+      year: 2002, 
+      type: 'flow', 
+      features: features2
+    });
 
     assert.equal(skatePark1.features, features1);
     assert.equal(skatePark2.features, features2);
   })
 
   it.skip('should default to being a public park', function() {
-    var skatePark1 = new SkatePark(
-      'Louisville Extreme Park', 
-      2002, 
-      'flow', 
-      ['full pipe', 'street course', '11 foot bowls']
-    );
+    var skatePark1 = new SkatePark({
+      name: 'Louisville Extreme Park', 
+      year: 2002, 
+      type: 'flow', 
+      features: ['full pipe', 'street course', '11 foot bowls']
+    });
 
-    var skatePark2 = new SkatePark(
-      'Curbside', 
-      2018, 
-      'street', 
-      ['indoor', 'staircase', 'quarter pipe'],
-      true
-    );
+    var skatePark2 = new SkatePark({
+      name: 'Curbside', 
+      year: 2018, 
+      type: 'street', 
+      features: ['indoor', 'staircase', 'quarter pipe'],
+      isPrivate: true
+    });
 
     assert.equal(skatePark1.isPrivate, false);
     assert.equal(skatePark2.isPrivate, true);
   })
 
   it.skip('should defaut to being free', function() {
-    var skatePark1 = new SkatePark(
-      'Louisville Extreme Park', 
-      2002, 
-      'flow', 
-      ['full pipe', 'street course', '11 foot bowls'],
-    );
+    var skatePark1 = new SkatePark({
+      name: 'Louisville Extreme Park', 
+      year: 2002, 
+      type: 'flow', 
+      features: ['full pipe', 'street course', '11 foot bowls']
+    });
 
-    var skatePark2 = new SkatePark(
-      'Curbside', 
-      2018, 
-      'street', 
-      ['indoor', 'staircase', 'quarter pipe'],
-      true, 
-      12
-    );
+    var skatePark2 = new SkatePark({
+      name: 'Curbside', 
+      year: 2018, 
+      type: 'street', 
+      features: ['indoor', 'staircase', 'quarter pipe'],
+      isPrivate: true, 
+      price: 12
+    });
 
     assert.equal(skatePark1.cost, 0)
     assert.equal(skatePark2.cost, 12)
   });
 
-  // finish skater tests below before completing the rest of the skatepark tests
-  
   it.skip('should be able to keep track of its occupants', function() {
-    var skatePark = new SkatePark(
-      'Major Taylor',
-      1999,
-      'flow',
-      ['pyramid', 'funbox', '4-set staircase'],
-    )
+    var skatePark = new SkatePark({
+      name: 'Major Taylor',
+      year: 1999,
+      type: 'flow',
+      features: ['pyramid', 'funbox', '4-set staircase'],
+      isPrivate: true,
+      price: 15,
+    })
 
     assert.deepEqual(skatePark.occupants, [])
   })
 
+  // Stop!
+  // Scroll down a bit and finish the Skater tests
+  // before completing the rest of these Skatepark tests
+  
   it.skip('should take payment from the skater only if it is a private park', function() {
     var tricks = {
       kickflip: true,
@@ -164,7 +180,7 @@ describe('Skate Park', function() {
       12
     );
 
-    assert(skatePark.admit(skater), `Sorry, you don't have enough money.`)
+    assert.equal(skatePark.admit(skater), `Sorry, you don't have enough money.`)
   })
 
   it.skip('should only allow 3 skaters at a time for social distancing', function() {
@@ -305,7 +321,7 @@ describe('Skater', function() {
     assert.equal(skater.frustration, 0)
   })
 
-  it.skip('should get more frustrated when practicing tricks they dont know', function() {
+  it.skip('should increase frustration by 1 when practicing tricks they dont know', function() {
     var tricks = {
       kickflip: true,
       treflip: false,
@@ -318,8 +334,10 @@ describe('Skater', function() {
       cash: 20
     });
 
-    skater.practice('treflip')
     skater.practice('kickflip')
+
+    assert.equal(skate.frustration, 0)
+    skater.practice('treflip')
     skater.practice('treflip')
 
     assert.equal(skater.frustration, 2)
