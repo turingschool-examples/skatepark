@@ -107,7 +107,7 @@ describe('Skate Park', function() {
   })
 
   // Stop!
-  // Scroll down a bit and finish the Skater tests
+  // Scroll down a bit and finish the Skater tests (line 235)
   // before completing the rest of these Skatepark tests
   
   it.skip('should take payment from the skater only if it is a private park', function() {
@@ -123,21 +123,21 @@ describe('Skate Park', function() {
       cash: 20
     });
 
-    var skatePark = new SkatePark(
-      'Major Taylor',
-      1999,
-      'flow',
-      ['pyramid', 'funbox', '4-set staircase'],
-    )
+    var skatePark = new SkatePark({
+      name: 'Major Taylor',
+      year: 1999,
+      type: 'flow',
+      features: ['pyramid', 'funbox', '4-set staircase'],
+    })
 
-    var skatePark2 = new SkatePark(
-      'Curbside', 
-      2018, 
-      'street', 
-      ['indoor', 'staircase', 'quarter pipe'],
-      true, 
-      12
-    );
+    var skatePark2 = new SkatePark({
+      name: 'Curbside', 
+      year: 2018, 
+      type: 'street', 
+      features:['indoor', 'staircase', 'quarter pipe'],
+      isPrivate: true, 
+      price: 12
+    });
 
     assert.equal(skatePark.admit(skater), 'Welcome to the free Major Taylor Skatepark!')
     assert.equal(skater.money, 20)
@@ -149,14 +149,14 @@ describe('Skate Park', function() {
   })
 
   it.skip('should only admit skaters to a private park if they can pay', function() {
-    var skatePark = new SkatePark(
-      'Curbside', 
-      2018, 
-      'street', 
-      ['indoor', 'staircase', 'quarter pipe'],
-      true, 
-      12
-    );
+    var skatePark = new SkatePark({
+      name: 'Curbside', 
+      year: 2018, 
+      type: 'street', 
+      features:['indoor', 'staircase', 'quarter pipe'],
+      isPrivate: true, 
+      price: 12
+    });
 
     var tricks = {
       kickflip: true,
@@ -171,14 +171,14 @@ describe('Skate Park', function() {
       cash: 10
     });
 
-    var skatePark = new SkatePark(
-      'Woodward', 
-      2018, 
-      'street', 
-      ['indoor', 'staircase', 'quarter pipe'],
-      true, 
-      12
-    );
+    var skatePark = new SkatePark({
+      name: 'Woodward', 
+      year: 2018, 
+      type: 'street', 
+      features: ['indoor', 'staircase', 'quarter pipe'],
+      isPrivate: true, 
+      price: 12
+    });
 
     assert.equal(skatePark.admit(skater), `Sorry, you don't have enough money.`)
   })
@@ -214,14 +214,14 @@ describe('Skate Park', function() {
       cash: 200
     });
 
-    var skatePark = new SkatePark(
-      'Woodward', 
-      1970, 
-      'Flow', 
-      ['indoor', 'Foam Pit', 'Half Pipe'],
-      true, 
-      50
-    );
+    var skatePark = new SkatePark({
+      name: 'Woodward', 
+      year: 1970, 
+      type: 'Flow', 
+      features: ['indoor', 'Foam Pit', 'Half Pipe'],
+      isPrivate: true, 
+      price:50
+    });
 
     skatePark.admit(skater)
     skatePark.admit(skater2)
@@ -414,4 +414,4 @@ describe('Skater', function() {
 
 })
 
-// Go up and finish remaining SkatePark tests.
+// Go up and finish remaining SkatePark tests (line 113)
